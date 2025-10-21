@@ -177,8 +177,8 @@ Ctrl-U                      change_case_cycle
 
 # Tab                         indent_or_go_to_next_tabstop
 # Shift-Tab                   unindent
-Tab                         autoindent_region
-Shift-Tab                   indent_or_go_to_next_tabstop
+Shift-Tab                   autoindent_region
+Tab                 		indent_or_go_to_next_tabstop
 
 Ctrl-]                      indent
 Ctrl-[                      unindent
@@ -192,7 +192,7 @@ Alt-Plus                    move_to_next_editor_history
 Ctrl-PageUp                 move_to_previous_buffer
 Ctrl-PageDown               move_to_next_buffer
 
-{Shift}-Ctrl-/              toggle_comment
+Shift-Ctrl-/                toggle_comment
 Ctrl-L                      select_line
 
 # Alt-K                       scroll_viewport_up
@@ -212,7 +212,9 @@ Alt-PageDown                scroll_viewport_down_fast
 Alt-V                       move_cursor_to_viewport_center
 
 {Shift}-Ctrl-ArrowUp        move_up_to_empty_line
+{Shift}-Ctrl-Alt-K	        move_up_to_empty_line
 {Shift}-Ctrl-ArrowDown      move_down_to_empty_line
+{Shift}-Ctrl-Alt-J	        move_down_to_empty_line
 
 Alt-Shift-I                 add_cursors_to_line_ends
 Alt-Shift-Ctrl-I            add_cursors_to_line_starts
@@ -228,7 +230,7 @@ Ctrl-Shift-NumpadEnter      new_line_above_without_breaking
 Ctrl-"                      switch_to_left_editor
 Ctrl-'                      switch_to_right_editor
 Ctrl-,                      switch_to_other_editor
-Ctrl-?                      duplicate_editor
+{Shift}-Ctrl-?              duplicate_editor
 
 Ctrl-Alt-Shift-ArrowLeft    move_editor_to_the_left
 Ctrl-Alt-Shift-ArrowRight   move_editor_to_the_right
@@ -300,7 +302,7 @@ Ctrl-Z                      undo
 Ctrl-Shift-Z                redo
 
 Ctrl-D                      select_word
-# Ctrl-A                      select_all
+Ctrl-Alt-A	                select_all
 
 Ctrl-K                      cut_to_end_of_line
 Ctrl-Shift-Delete           delete_to_end_of_line
@@ -325,23 +327,29 @@ Shift-Tab                   focus_previous_ui_element
 # {Shift}- means shift is optional, the key combination will still be matched.
 # NOTE: in this editor the Shift key is hard-coded to extend selection when held
 {Shift}-ArrowUp             move_up
+{Shift}-Alt-K				move_up
 {Shift}-Ctrl-ArrowUp        move_up_fast
 {Shift}-PageUp              move_up_one_page
-Alt-K						move_up_one_page
+# Alt-K						move_up_one_page
 
 {Shift}-ArrowDown           move_down
+{Shift}-Alt-J				move_down
 {Shift}-Ctrl-ArrowDown      move_down_fast
 {Shift}-PageDown            move_down_one_page
-Alt-J						move_down_one_page
+# Alt-J						move_down_one_page
 
 {Shift}-ArrowLeft           move_left
+{Shift}-Alt-H				move_left
 {Shift}-Alt-ArrowLeft       move_left_by_character_type
 {Shift}-Ctrl-ArrowLeft      move_left_through_word_throttled
+{Shift}-Ctrl-Alt-H			move_left_through_word_throttled
 {Shift}-Meta-ArrowLeft      move_left_through_word
 
 {Shift}-ArrowRight          move_right
+{Shift}-Alt-L				move_right
 {Shift}-Alt-ArrowRight      move_right_by_character_type
 {Shift}-Ctrl-ArrowRight     move_right_through_word_throttled
+{Shift}-Ctrl-Alt-L			move_right_through_word_throttled
 {Shift}-Meta-ArrowRight     move_right_through_word
 
 {Shift}-Home                jump_to_line_start
@@ -349,9 +357,9 @@ Alt-J						move_down_one_page
 Ctrl-A                      jump_to_line_start
 Ctrl-E                      jump_to_line_end
 {Shift}-Ctrl-Home           jump_to_file_start
-Alt-H						jump_to_file_start
+Ctrl-<						jump_to_file_start
 {Shift}-Ctrl-End            jump_to_file_end
-Alt-L						jump_to_file_end
+Alt-<						jump_to_file_end
 {Shift}-Ctrl-M              jump_to_matching_bracket
 
 {Shift}-Backspace           delete_left_char
@@ -363,7 +371,7 @@ Ctrl-Q						delete_right_char
 {Shift}-Meta-Delete         delete_right_through_word
 Ctrl-Backspace              delete_left_by_character_type_fast
 Ctrl-Delete                 delete_right_by_character_type_fast
-Ctrl-Alt-Q					delete_right_by_character_type_fast
+Alt-Q						delete_right_by_character_type_fast
 
 Ctrl-Plus                   increase_font_size
 Ctrl-Minus                  decrease_font_size
@@ -378,7 +386,7 @@ Shift-Ctrl-F8               go_to_previous_build_error_on_the_side
 
 [[style]]
 
-theme: default
+theme: zenburn
 
 [fonts]
 # font:          default
