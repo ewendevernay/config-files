@@ -5,7 +5,7 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(dolist (p '(multiple-cursors markdown-mode forth-mode))
+(dolist (p '(multiple-cursors yaml-mode toml-mode markdown-mode forth-mode))
   (when (not (package-installed-p p))
     (package-install p)))
 
@@ -35,14 +35,17 @@
 (keymap-global-set "C-b" 'yank-pop)
 (keymap-global-set "C-f" 'isearch-forward)
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
+(define-key isearch-mode-map "\C-v" 'isearch-yank-kill)
 (keymap-global-set "C-a" 'mark-whole-buffer)
 (keymap-global-set "C-o" 'ido-find-file)
+(keymap-global-set "M-o" 'ido-dired)
 (keymap-global-set "C-<tab>" 'ido-switch-buffer)
 (keymap-global-set "C-w" 'ido-kill-buffer)
 (keymap-global-set "C-," 'other-window)
 (keymap-global-set "C-<home>" 'beginning-of-buffer)
 (keymap-global-set "C-<end>" 'end-of-buffer)
 (keymap-global-set "M-v" 'move-to-window-line-top-bottom)
+(define-key dired-mode-map "\C-o" 'ido-find-file)
 
 (global-auto-revert-mode 1)
 
@@ -52,10 +55,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wheatgrass))
- '(package-selected-packages '(forth-mode markdown-mode multiple-cursors)))
+ '(package-selected-packages
+   '(forth-mode markdown-mode multiple-cursors toml-mode yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight regular :height 110 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight regular :height 120 :width normal)))))
