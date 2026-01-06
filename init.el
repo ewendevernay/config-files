@@ -34,6 +34,7 @@
 (keymap-global-set "C-v" 'yank)
 (keymap-global-set "C-b" 'yank-pop)
 (keymap-global-set "C-f" 'isearch-forward)
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (keymap-global-set "C-a" 'mark-whole-buffer)
 (keymap-global-set "C-o" 'ido-find-file)
 (keymap-global-set "C-<tab>" 'ido-switch-buffer)
@@ -42,6 +43,8 @@
 (keymap-global-set "C-<home>" 'beginning-of-buffer)
 (keymap-global-set "C-<end>" 'end-of-buffer)
 (keymap-global-set "M-v" 'move-to-window-line-top-bottom)
+
+(global-auto-revert-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -55,4 +58,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight regular :height 120 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight regular :height 110 :width normal)))))
