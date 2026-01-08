@@ -16,6 +16,8 @@
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
 (ido-mode 1)
 
 (load-file "~/.emacs.d/rebinder.el")
@@ -106,6 +108,8 @@
 (global-set-key (kbd "M-S-<down>") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C-S-a") 'mc/mark-all-like-this)
+
+(keymap-global-set "C-/" 'comment-line)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
