@@ -5,7 +5,7 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(dolist (p '(multiple-cursors yaml-mode toml-mode markdown-mode zenburn-theme))
+(dolist (p '(multiple-cursors zenburn-theme visible-mark))
   (when (not (package-installed-p p))
     (package-install p)))
 
@@ -15,8 +15,6 @@
 
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
-
-(setq-default buffer-file-coding-system 'utf-8-unix)
 
 (ido-mode 1)
 
@@ -48,6 +46,7 @@
 (keymap-global-set "C-<home>" 'beginning-of-buffer)
 (keymap-global-set "C-<end>" 'end-of-buffer)
 (keymap-global-set "M-v" 'move-to-window-line-top-bottom)
+(keymap-global-set "<backtab>" 'indent-region)
 (keymap-global-set "<f5>" 'compile)
 
 (defun move-text-internal (arg)
@@ -86,30 +85,28 @@
 (keymap-global-set "M-<up>" 'move-text-up)
 (keymap-global-set "M-<down>" 'move-text-down)
 
-(defun select-current-line ()
-  (interactive)
-  (if (and mark-active transient-mark-mode) ;; We are already selecting
-      (progn
-	(end-of-line)
-	(forward-char))
-    (beginning-of-line)
-    (set-mark (point))
-    (next-line)))
-
-(keymap-global-set "C-l" 'select-current-line)
-
 (require 'dired)
 (define-key dired-mode-map "\C-o" 'ido-find-file)
 
 (global-auto-revert-mode 1)
 
-(require 'multiple-cursors)
-(global-set-key (kbd "M-S-<up>") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-S-<down>") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-d") 'mc/mark-next-like-this-word)
-(global-set-key (kbd "C-S-a") 'mc/mark-all-like-this)
+(setq transient-mark-mode nil)
 
-(keymap-global-set "C-/" 'comment-line)
+(setq visible-mark-max 1)
+(global-visible-mark-mode 1)
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (c-set-style "k&r")
+            (setq indent-tabs-mode t)
+	    (setq tab-width 2)
+            (setq c-basic-offset tab-width)))
+
+(require 'multiple-cursors)
+(keymap-global-set "M-S-<down>" 'mc/mark-next-like-this)
+(keymap-global-set "M-S-<up>" 'mc/mark-previous-like-this)
+(keymap-global-set "C-d" 'mc/mark-next-like-this-word)
+(keymap-global-set "C-S-a" 'mc/mark-all-like-this)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -118,9 +115,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(zenburn))
  '(custom-safe-themes
-   '("972f792651d32b0506481b9e87b2fbc9b732ae9da2527562668c6e7d149fefda" default))
- '(package-selected-packages
-   '(zenburn-theme yaml-mode toml-mode multiple-cursors markdown-mode forth-mode)))
+   '("f654d73d7a0761cc4f7d99fffe4b16fce1b2d95844f37bc786e455cec744ac75" "972f792651d32b0506481b9e87b2fbc9b732ae9da2527562668c6e7d149fefda" default))
+ '(package-selected-packages '(visible-mark zenburn-theme multiple-cursors)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
